@@ -15,7 +15,11 @@
       "allowJs": true,
       "moduleResolution": "node",
       // для абсолютного импорта //
-      //"baseUrl": ".",
+      "baseUrl": ".",
+      // сокращение больших импортов //
+      "paths": {
+        "*": ["./src/*"]
+      },
       // esModuleInterop позволяет работать с пакетами, которые используют //
       // common js как с обычными пакетами с помощью import //
       "esModuleInterop": true,

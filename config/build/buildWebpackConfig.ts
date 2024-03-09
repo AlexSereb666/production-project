@@ -40,7 +40,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             // т.е. это png. jpeg, ts, gif, css и т.д. //
             rules: buildLoaders(options),
         },
-        resolve: buildResolves(),
+        resolve: buildResolves(options),
         // когда вебпак собирает приложение, все файлы js собираются в один файл //
         // и отследить ошибку в данной ситуации сложно, для этого и нужен devtool //
         // поэтому вебпак делает карты исходного кода, по которым мы можем четко по //
