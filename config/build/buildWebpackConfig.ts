@@ -1,13 +1,13 @@
-import path from 'path'
-import webpack from 'webpack'
-import { BuildOptions } from "./types/config";
+import path from 'path';
+import webpack from 'webpack';
+import { BuildOptions } from './types/config';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
 import { buildResolves } from './buildResolves';
 import { buildDevServer } from './buildDevServer';
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-    const {paths, mode, isDev} = options;
+    const { paths, mode, isDev } = options;
 
     return {
         // mode может быть development либо production, первый для разработки,
@@ -15,7 +15,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         // Webpack собирает приложение в более сжатом виде, удаляет комменты и тд.
         // уменьшает размер приложение одним словом //
         // это называется минификация //
-        mode: mode,
+        mode,
         // entry - стартовая точка приложения //
         // можно указывать несколько энтри-поинтов если такие существуют //
         /* пример
@@ -27,7 +27,8 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         // output - куда и как мы будем делать сборку нашего приложения //
         output: {
             // в квадратных скобках указываем динамические названия сборки //
-            // [contenthash] - решение проблемы кеширования, чтобы пользователю всегда отдавалась актуальная версия сборки //
+            // [contenthash] - решение проблемы кеширования, //
+            // чтобы пользователю всегда отдавалась актуальная версия сборки //
             // [contenthash] - генерирует уникальные идентификаторы //
             filename: '[name].[contenthash].js',
             path: paths.build,
@@ -47,5 +48,5 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         // стектрейсу увидеть где, в какой функции, файле произошла ошибка //
         devtool: isDev ? 'inline-source-map' : undefined,
         devServer: isDev ? buildDevServer(options) : undefined,
-    }
+    };
 }
