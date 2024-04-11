@@ -4,6 +4,9 @@
       "": ""
     }
   },
+  "decrement": "decrement",
+  "increment": "increment",
+  "sidebar-toggle": "sidebar-toggle",
   "throw error": "throw error",
   "Войти": "Войти",
   "Главная": "Главная",
